@@ -26,7 +26,7 @@ You must have pysocks installed, to support Tor connection via socks5 proxy.
 ## Requirements
 * LNBits wallet
 * Python module: pysocks
-* Python modules: bolt11 (https://github.com/nievk/bolt11)
+* Python modules: bolt11 (https://github.com/nievk/bolt11 - for decoding bolt11 invoices, to check withdrawal amounts)
 * Tor running on host
 
 ## How to run
