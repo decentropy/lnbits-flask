@@ -2,10 +2,7 @@
 
 This is a barebones flask web application that accepts lightning payments and withdrawals.
 
-Customize to enable lightning payments and refunds in your web application.
-
-lnbits.py wraps calls to LNBits API, configured in flaskapp.py:
-
+It wraps calls to an LNBits wallet, configured in flaskapp.py:
 ```
  lnbits_kwargs = {
   "host": "http://YOUR LN NODE TOR ADDRESS.onion",
