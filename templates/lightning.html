@@ -10,7 +10,7 @@
   <div onclick="this.style.display='none'" style="background-color:#cccccc;">{{ message }}</div>
 {% endfor %}
 
-<h1 id='header'>lnbits example</h1>
+<h1 id='header'>lnbits example</h1><hr/>
 <script>
 function showWaitMessage(){
   document.getElementById('header').innerText = "connecting, please wait...";
@@ -19,14 +19,16 @@ function showWaitMessage(){
 
 {% if page=="lightning" %}
 
-  <hr/><h2>Pay</h2>
+  <h2>Pay</h2>
   <form action="/lnbits/invoice" method = "GET" onsubmit="showWaitMessage()">
     <input type="text" name="memo" placeholder="item description" /><br/>
     <input type="number" name="sats" placeholder="satoshis" value="" required /><br/>
     <input type="submit" value="create invoice" />
   </form>
   
-  <hr/><h2>Withdraw</h2>
+  <hr/>
+  
+  <h2>Withdraw</h2>
   <form action="/lnbits/withdraw" method="GET" onsubmit="showWaitMessage()">
   <textarea placeholder="lnb1234567890abcdefghiklmnopqrstuv1234567890abcdefghiklmnopqrstuvwxyz"
    name="withdrawbolt11" required ></textarea><br/>
@@ -36,13 +38,12 @@ function showWaitMessage(){
 {% endif %}
 
 {% if page=="pay" %}
-  <hr/>
-  <a class="mybtn" onclick="showWaitMessage()" href="/lnbits/verify"><b>Click after paying {{ session["invoice"]["sats"] }} satoshis</b><a/>
-  <br/>for {{ session["invoice"]["memo"] }}
-  <div id="bolt11qr" onclick="location.href='lightning:'+bolt11" style="background-color:white; width:350px; height:350px; padding:20px;"></div>
-  <textarea id="bolt11txt"></textarea><br/>
-  <b>Lightning invoice expires at<br/>
-  {{ session["invoice"]["expires"] }}</b><br/>
+
+  <a onclick="showWaitMessage()" href="/lnbits/verify"><b>Click here after paying</b><a/>
+  <br/>{{ session["invoice"]["sats"] }} satoshis for {{ session["invoice"]["memo"] }}
+  
+  <div id="bolt11qr" onclick="location.href='lightning:'+bolt11" style="background-color:white; width:350px; height:350px; border:solid 1px black; padding:20px; margin:20px;"></div>
+  <textarea id="bolt11txt"></textarea><br/><br/>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js" attrib="https://davidshimjs.github.io/qrcodejs/"></script>
   <script type="text/javascript">
   window.onload = function() {
@@ -51,9 +52,12 @@ function showWaitMessage(){
     document.getElementById("bolt11txt").value = bolt11;
   };
   </script>
+  
+  <b>Lightning invoice expires at<br/>
+  {{ session["invoice"]["expires"] }}</b><br/>
+  
 {% endif %}
 
 </div>
 </body>
 </html>
-
