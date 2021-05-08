@@ -30,3 +30,5 @@ You must have pysocks installed, to support Tor connection via socks5 proxy.
 * Install requirements above
 * Customize lnbits_kwargs in flaskapp.py
 * $ python3 flaskapp.py
+
+It's possible to add payment detection on QR invoice page, using LNBits webhooks and flask_socketio... but that was left out to keep the example simple.
