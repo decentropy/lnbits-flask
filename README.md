@@ -21,7 +21,7 @@ Set tor=True, if LNBits host is an onion address.
 
 You must have Tor running on the flask host.
 
-You must have pysocks installed, to use Tor connection via socks5 proxy.
+You must have pysocks installed, to support Tor connection via socks5 proxy.
 
 ## Requirements
 * LNBits wallet
